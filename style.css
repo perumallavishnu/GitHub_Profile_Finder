@@ -1,0 +1,342 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: 80%;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container i {
+    width: 30px;
+    height: 30px;
+}
+
+#searchInput {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#searchBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1c283c;
+    opacity: .8;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#searchBtn:hover {
+    background-color: #1c283c;
+    opacity: 1;
+}
+
+#profile-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#profile-container img {
+    border-radius: 30px;
+    border: 10px solid #101c2e;
+    margin-top: -80px;
+    width: 200px;
+    height: 200px;
+}
+
+.searchbar {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    /* Add padding to leave space for the icon */
+    font-size: 16px;
+    color: #c9d1d9;
+    /* Light text color for dark background */
+    background-color: #0d1117;
+    /* GitHub theme dark background */
+    border: 1px solid #30363d;
+    /* Subtle border to match GitHub style */
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.443), 0 6px 20px 0 rgba(0, 0, 0, 0.585);
+}
+
+.searchbar::placeholder {
+    color: #8b949e;
+    /* Subtle placeholder text */
+}
+
+.searchbar:focus {
+    outline: none;
+    border-color: #58a6ff;
+    /* GitHub's blue highlight */
+}
+
+button {
+    background: transparent;
+    color: #757575;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+/* Repository section */
+#repo-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+
+}
+
+.repo {
+    background: rgb(34, 25, 36);
+    background: linear-gradient(306deg, rgba(34, 25, 36, 1) 0%, rgba(25, 31, 62, 1) 100%);
+    padding: 25px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    color: #c9d1d9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: .5s;
+}
+
+.repo:hover {
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.585);
+}
+
+.repo a {
+    color: #7f81ff;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.repo a:hover {
+    text-decoration: underline;
+}
+
+.repo p {
+    margin-top: 10px;
+    color: #8b949e;
+}
+
+/* View More Button */
+#view-more-container {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#viewMoreBtn {
+    color: rgb(101, 101, 101);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#viewMoreBtn:hover {
+    color: #58a6ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #repo-container {
+        grid-template-columns: 1fr;
+        /* Single column on smaller screens */
+    }
+
+    #view-more-container {
+        display: none;
+        /* Hide View More button on small screens */
+    }
+}
+
+.pc {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.pc .pp {
+    width: 500px;
+    height: auto;
+    color: white;
+    font-size: 22px;
+}
+
+.pc .pp p {
+    text-align: center;
+    width: auto;
+    height: auto;
+    color: #757575;
+}
+
+.pc .pp h2 {
+    text-shadow: 2px 2px 25px #000000;
+}
+
+.pc .pd {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.pd p {
+    background: #182031;
+    padding: 18px 32px;
+    border-radius: 20px;
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.pd p strong {
+    color: #5a5959;
+}
+
+.pc .pd a {
+    font-size: 50px;
+    color: white;
+}
+
+.sc {
+    height: 40vh;
+    background-image: url(bg.jpg);
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.sd {
+    /* background-color: #101c2e; */
+    background: rgb(8, 5, 9);
+    background: linear-gradient(306deg, rgba(8, 5, 9, 1) 0%, rgba(16, 24, 60, 1) 100%);
+}
+
+.typing {
+    font-size: 4.5rem;
+    width: 23ch;
+    /* Set the width to the number of characters */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #c9d1d9;
+    /* Simulate a cursor */
+    animation: typing 14s steps(23) infinite, blink 0.5s step-end infinite;
+    text-shadow: 2px 2px 25px #000000, -2px -2px 25px #000000;
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 23ch;
+        /* Full width */
+    }
+
+    100% {
+        width: 0;
+        /* Reset to no text */
+    }
+}
+
+@keyframes blink {
+    from {
+        border-color: transparent;
+    }
+
+    to {
+        border-color: #c9d1d9;
+    }
+}
+
+/* Error Container */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    color: #ff4c4c;
+}
+
+/* Error Icon */
+.error-container i {
+    font-size: 180px;
+    margin-bottom: 20px;
+    animation: shake 0.5s ease-in-out;
+    /* Apply shake animation */
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    75% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Error Message */
+.error-container p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff4c4c;
+}
+
+.ach {
+    display: flex;
+    justify-content: space-evenly;
+}
