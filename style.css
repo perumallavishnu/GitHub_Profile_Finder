@@ -1,235 +1,166 @@
+/* Reset and Base Styles */
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body {
     background-color: #0d1117;
     color: #c9d1d9;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 
 main {
-    width: 80%;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
 }
 
+/* Typing Animation */
+.typing {
+    font-size: 4.5rem;
+    width: 23ch;
+    /* Number of characters */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #c9d1d9;
+    animation: typing 14s steps(23) infinite, blink 0.5s step-end infinite;
+    text-shadow: 2px 2px 25px #000000, -2px -2px 25px #000000;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 23ch;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    from {
+        border-color: transparent;
+    }
+
+    to {
+        border-color: #c9d1d9;
+    }
+}
+
+/* Search Container */
 .search-container {
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 500px;
 }
 
-.search-container i {
-    width: 30px;
-    height: 30px;
-}
-
-#searchInput {
-    padding: 10px;
+.searchbar {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    /* Left padding for the search icon */
     font-size: 16px;
-    width: 300px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
+    color: #c9d1d9;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.443), 0 6px 20px rgba(0, 0, 0, 0.585);
+}
+
+.searchbar::placeholder {
+    color: #8b949e;
+}
+
+.searchbar:focus {
+    border-color: #58a6ff;
 }
 
 #searchBtn {
+    margin-left: 10px;
     padding: 10px 20px;
     font-size: 16px;
     background-color: #1c283c;
-    opacity: .8;
+    opacity: 0.8;
     color: white;
     border: 2px solid white;
     border-radius: 5px;
     cursor: pointer;
+    transition: opacity 0.3s;
 }
 
 #searchBtn:hover {
-    background-color: #1c283c;
     opacity: 1;
 }
 
+/* Suggestions Container */
+#suggestions-container {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    max-width: 500px;
+    background-color: #1c1e22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 10;
+    display: none;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.suggestion-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.suggestion-item:hover {
+    background-color: #30363d;
+}
+
+/* Profile Container */
 #profile-container {
     text-align: center;
     margin-bottom: 30px;
 }
 
 #profile-container img {
-    border-radius: 30px;
+    border-radius: 10%;
     border: 10px solid #101c2e;
-    margin-top: -80px;
     width: 200px;
     height: 200px;
+    object-fit: cover;
+    margin-top: -80px;
+    /* margin: 0 auto 20px auto; */
 }
 
-.searchbar {
-    width: 100%;
-    padding: 10px 15px 10px 40px;
-    /* Add padding to leave space for the icon */
-    font-size: 16px;
-    color: #c9d1d9;
-    /* Light text color for dark background */
-    background-color: #0d1117;
-    /* GitHub theme dark background */
-    border: 1px solid #30363d;
-    /* Subtle border to match GitHub style */
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.2s;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.443), 0 6px 20px 0 rgba(0, 0, 0, 0.585);
-}
-
-.searchbar::placeholder {
-    color: #8b949e;
-    /* Subtle placeholder text */
-}
-
-.searchbar:focus {
-    outline: none;
-    border-color: #58a6ff;
-    /* GitHub's blue highlight */
-}
-
-button {
-    background: transparent;
-    color: #757575;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-
-/* Repository section */
-#repo-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin: 20px auto;
-    max-width: 1000px;
-    padding: 0 20px;
-
-}
-
-.repo {
-    background: rgb(34, 25, 36);
-    background: linear-gradient(306deg, rgba(34, 25, 36, 1) 0%, rgba(25, 31, 62, 1) 100%);
-    padding: 25px;
-    border: 1px solid #30363d;
-    border-radius: 8px;
-    color: #c9d1d9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    transition: .5s;
-}
-
-.repo:hover {
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.585);
-}
-
-.repo a {
-    color: #7f81ff;
-    font-size: 22px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.repo a:hover {
-    text-decoration: underline;
-}
-
-.repo p {
-    margin-top: 10px;
-    color: #8b949e;
-}
-
-/* View More Button */
-#view-more-container {
-    text-align: center;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#viewMoreBtn {
-    color: rgb(101, 101, 101);
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-#viewMoreBtn:hover {
-    color: #58a6ff;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #repo-container {
-        grid-template-columns: 1fr;
-        /* Single column on smaller screens */
-    }
-
-    #view-more-container {
-        display: none;
-        /* Hide View More button on small screens */
-    }
-}
-
-.pc {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.pc .pp {
-    width: 500px;
-    height: auto;
-    color: white;
-    font-size: 22px;
-}
-
-.pc .pp p {
-    text-align: center;
-    width: auto;
-    height: auto;
-    color: #757575;
-}
-
-.pc .pp h2 {
-    text-shadow: 2px 2px 25px #000000;
-}
-
-.pc .pd {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.pd p {
-    background: #182031;
-    padding: 18px 32px;
-    border-radius: 20px;
-    color: #ffffff;
-    font-weight: 900;
-}
-
-.pd p strong {
-    color: #5a5959;
-}
-
-.pc .pd a {
-    font-size: 50px;
-    color: white;
-}
+/* Profile Details */
 
 .sc {
     height: 40vh;
@@ -250,43 +181,186 @@ button {
     background: linear-gradient(306deg, rgba(8, 5, 9, 1) 0%, rgba(16, 24, 60, 1) 100%);
 }
 
-.typing {
-    font-size: 4.5rem;
-    width: 23ch;
-    /* Set the width to the number of characters */
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid #c9d1d9;
-    /* Simulate a cursor */
-    animation: typing 14s steps(23) infinite, blink 0.5s step-end infinite;
-    text-shadow: 2px 2px 25px #000000, -2px -2px 25px #000000;
+.pc {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-@keyframes typing {
-    0% {
-        width: 0;
-    }
-
-    50% {
-        width: 23ch;
-        /* Full width */
-    }
-
-    100% {
-        width: 0;
-        /* Reset to no text */
-    }
+.pc .pp {
+    max-width: 400px;
+    color: white;
+    font-size: 22px;
+    text-align: center;
 }
 
-@keyframes blink {
-    from {
-        border-color: transparent;
-    }
-
-    to {
-        border-color: #c9d1d9;
-    }
+.pc .pp p {
+    color: #757575;
+    margin-top: 10px;
 }
+
+.pc .pp h2 {
+    text-shadow: 2px 2px 25px #000000;
+    margin-bottom: 10px;
+}
+
+.pc .pd {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pd p {
+    background: #182031;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #ffffff;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pd p strong {
+    color: #5a5959;
+}
+
+.pc .pd a {
+    font-size: 30px;
+    color: white;
+}
+
+/* Achievements */
+.achievements {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.achievements h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.ach {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.ach p {
+    background: #182031;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #ffffff;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Repository Section */
+#repo-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.repo {
+    background: rgb(34, 25, 36);
+    background: linear-gradient(306deg, rgba(34, 25, 36, 1) 0%, rgba(25, 31, 62, 1) 100%);
+    padding: 25px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    color: #c9d1d9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.5s;
+}
+
+.repo:hover {
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.585);
+}
+
+.repo a {
+    color: #7f81ff;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.repo a:hover {
+    text-decoration: underline;
+}
+
+.repo p {
+    margin-top: 10px;
+    color: #8b949e;
+    font-size: 16px;
+}
+
+/* Repo Details */
+.repo .repo-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.repo-details div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.repo-details div i {
+    font-size: 18px;
+    color: #c9d1d9;
+}
+
+.repo-details div span {
+    font-size: 14px;
+    color: #c9d1d9;
+}
+
+/* View More Button */
+#view-more-container {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#viewMoreBtn {
+    display: none;
+    /* Hidden by default */
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+
+/* #viewMoreBtn:hover {
+    background-color: #2ea043;
+} */
 
 /* Error Container */
 .error-container {
@@ -298,15 +372,12 @@ button {
     color: #ff4c4c;
 }
 
-/* Error Icon */
 .error-container i {
     font-size: 180px;
     margin-bottom: 20px;
     animation: shake 0.5s ease-in-out;
-    /* Apply shake animation */
 }
 
-/* Shake Animation */
 @keyframes shake {
     0% {
         transform: translateX(0);
@@ -329,14 +400,296 @@ button {
     }
 }
 
-/* Error Message */
 .error-container p {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     color: #ff4c4c;
 }
 
-.ach {
-    display: flex;
-    justify-content: space-evenly;
+/* Responsive Breakpoints */
+
+/* Large Tablets and Small Laptops (1024px to 1200px) */
+@media (max-width: 1200px) {
+    .pc .pp {
+        max-width: 350px;
+    }
+
+    .pc .pd p {
+        padding: 14px 28px;
+    }
+
+    .ach p {
+        padding: 10px 20px;
+    }
+
+    .repo a {
+        font-size: 20px;
+    }
+
+    .repo p {
+        font-size: 15px;
+    }
+
+    .achievements h3 {
+        font-size: 22px;
+    }
+
+    #searchInput {
+        width: 250px;
+    }
+}
+
+/* Tablets (768px to 1024px) */
+@media (max-width: 1024px) {
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    #searchInput {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    #searchBtn {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .pc {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pc .pd {
+        gap: 20px;
+    }
+
+    .pc .pd p {
+        padding: 12px 24px;
+    }
+
+    .ach {
+        gap: 15px;
+    }
+
+    .ach p {
+        padding: 8px 16px;
+    }
+
+    .repo {
+        padding: 20px;
+    }
+
+    .repo a {
+        font-size: 20px;
+    }
+
+    .repo p {
+        font-size: 14px;
+    }
+
+    .achievements h3 {
+        font-size: 20px;
+    }
+
+    #viewMoreBtn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    .typing {
+        font-size: 3rem;
+        width: 21ch;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #profile-container img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .pc {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pd {
+        gap: 20px;
+    }
+
+    .pd p {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .ach {
+        gap: 15px;
+    }
+
+    .ach p {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .repo {
+        padding: 20px;
+    }
+
+    .repo a {
+        font-size: 20px;
+    }
+
+    .repo p {
+        font-size: 14px;
+    }
+
+    .achievements h3 {
+        font-size: 20px;
+    }
+
+    #viewMoreBtn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    .typing {
+        font-size: 2.5rem;
+        width: 18ch;
+    }
+
+    .search-container {
+        max-width: 300px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #searchInput {
+        width: 100%;
+        padding: 8px 12px 8px 35px;
+        font-size: 14px;
+    }
+
+    #searchBtn {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    #profile-container img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .pc .pp {
+        max-width: 100%;
+    }
+
+    .pc .pd {
+        gap: 15px;
+    }
+
+    .pd p {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+    .ach {
+        gap: 10px;
+    }
+
+    .ach p {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .repo {
+        padding: 15px;
+    }
+
+    .repo a {
+        font-size: 18px;
+    }
+
+    .repo p {
+        font-size: 12px;
+    }
+
+    .achievements h3 {
+        font-size: 18px;
+    }
+
+    #viewMoreBtn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Devices (320px and below) */
+@media (max-width: 320px) {
+    .typing {
+        font-size: 2rem;
+        width: 16ch;
+    }
+
+    #searchInput {
+        padding: 8px 10px 8px 30px;
+        font-size: 12px;
+    }
+
+    #searchBtn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    #profile-container img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .pc .pp {
+        max-width: 100%;
+    }
+
+    .pd p {
+        padding: 8px 16px;
+        font-size: 10px;
+    }
+
+    .ach p {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .repo {
+        padding: 15px;
+    }
+
+    .repo a {
+        font-size: 16px;
+    }
+
+    .repo p {
+        font-size: 10px;
+    }
+
+    .achievements h3 {
+        font-size: 16px;
+    }
+
+    #viewMoreBtn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
 }
